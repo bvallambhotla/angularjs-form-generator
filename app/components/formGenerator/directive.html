@@ -1,0 +1,83 @@
+<form name="form" class="form-horizontal form-area" role="form">
+    <div class="page-header">
+        <h2 class="h1-responsive font-weight-bold text-center my-5">{{formCtrl.formName}}</h2>
+    </div>
+
+    <div  ng-repeat="field in formCtrl.fields">    
+     <div ng-if="field.when ? formCtrl.model[field.when]: true">
+       
+       <!-- TEXT FIELDS -->
+       <div ng-if="field.type === 'text'" class="form-group">
+         <label class="col-sm-2 control-label">{{field.label}} <span ng-show="field.required">*</span></label>
+         <div class="col-sm-6">
+           <input type="{{ field.type }}" name="{{field.name}}" id="{{field.name}}"  class="form-control" 
+                data-ng-model="formCtrl.model[field.name]" validate="{{field.validate}}"  
+                ng-required="field.required" placeholder="{{field.placeholder}}"/>            
+            <span class="required" ng-show=" {{'form.'+field.name+'.$dirty && form.'+field.name+'.$error.required'}}">Required!</span>
+         </div>
+       </div>
+   
+       <!-- PASSWORD FIELDS -->
+       <div ng-if="field.type === 'password'" class="form-group" >
+         <label class="col-sm-2 control-label">{{field.label}} <span ng-show="field.required">*</span></label>
+         <div class="col-sm-6">
+           <input type="{{ field.type }}" name="{{field.name}}" data-ng-model="formCtrl.model[field.name]" ng-minlength={{field.min}} ng-maxlength={{field.max}} class="form-control" required/>
+            <span class="required" ng-show=" {{'form.'+field.name+'.$dirty && form.'+field.name+'.$error.required'}}">Required!</span>
+            <span ng-show=" {{'!form.'+field.name+'.required && (form.'+field.name+'.$error.minlength || form.'+field.name+'.$error.maxlength)' }}">Passwords must be between 8 and 20 characters.</span>
+           </div>
+       </div>
+
+       <!-- SEARCHBOX FIELDS -->
+       <div ng-if="field.type === 'searchbox'" class="form-group">
+          <label class="col-sm-2 control-label">{{field.label}} <span ng-show="field.required">*</span></label>
+          <div class="col-sm-6">
+              <vt-dropdown 
+                items="field.options"
+                model="formCtrl.model[field.name]"                
+                display-field="{{field.displayName}}" url="{{field.dropDownUrl}}">
+              </vt-dropdown>
+          </div>      
+        </div>
+
+        <div ng-if="field.type === 'textarea'" class="form-group">
+            <label class="col-sm-2 control-label">{{field.label}}</label>
+            <div class="col-sm-6">
+              <textarea type="{{ field.type }}" name="{{field.name}}" id="{{field.name}}"  class="form-control" 
+                    data-ng-model="formCtrl.model[field.name]" validate="{{field.validate}}"
+                    ng-required="field.required" placeholder="{{field.placeholder}}"> </textarea>            
+                <span class="required" ng-show=" {{'form.'+field.name+'.$dirty && form.'+field.name+'.$error.required'}}">Required!</span>
+            </div>
+        </div>
+   
+       <!-- RADIO FIELDS -->
+       <div ng-if="field.type === 'radio'" class="form-group">
+         <label class="col-sm-2 control-label">{{field.label}}</label>
+         <div class="col-sm-6">
+   
+           <div class="checkbox" ng-repeat="option in field.options" >
+                     <label>                
+               <input type="radio" data-ng-model="formCtrl.model[field.name]"  name="taskGroup"  id="{{option.name}}" value="{{option.id}}">{{option.name}}
+             </label>
+                   </div>
+         </div>
+       </div>
+   
+       <!-- CHECKBOX FIELDS -->
+       <div ng-if="field.type === 'checkbox'" class="form-group" >
+         <label class="col-sm-2 control-label">{{field.label}}</label>
+         <div class="col-sm-6">        
+            <div class="checkbox" ng-repeat="option in field.options" >
+                <label>
+                  <input type="checkbox" data-ng-model="formCtrl.model[field.name]"  name="taskGroup"  id="{{option.name}}" value="{{option.id}}" >{{option.name}}
+                </label>
+            </div>
+   
+         </div>
+       </div>       
+      </div>
+    </div>
+
+    <div class="col-md-12 text-center" ng-if = "formCtrl.fields.length > 0">
+      <button class="btn-primary" ng-click="formCtrl.onSubmit(formCtrl.model)" type="submit" ng-disabled="!form.$valid">Submit</button>
+    </div>
+</form>

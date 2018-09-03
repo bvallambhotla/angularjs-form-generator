@@ -1,0 +1,11 @@
+.form-area {
+    background-color: #FAFAFA;
+	padding: 10px 40px 60px;
+	margin: auto;
+    border: 1px solid GREY;
+    width: 50%;
+}
+
+.required {
+    color: crimson;
+}

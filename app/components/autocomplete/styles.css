@@ -1,0 +1,19 @@
+.vt-dropdown .searchbox {
+    border-radius: 10px;
+  }
+
+  .vt-dropdown-link span:hover{
+    font-style: italic;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .vt-dropdown-canvas .searchbox {
+      padding-bottom: 2px;
+  }
+
+  .vt-dropdown-canvas label {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    cursor: pointer;
+  }

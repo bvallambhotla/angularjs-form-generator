@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The Vetted</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="components/autocomplete/styles.css">
+  <link rel="stylesheet" href="components/formGenerator/styles.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+  
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div id="fullscreen_bg" class="fullscreen_bg"/>
+  <div ng-view></div>
+
+  
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBe2V_0jwk8Ds1nJx3cHl8hvO9Yc6y3FVo",
+    authDomain: "vetted-assignment.firebaseapp.com",
+    databaseURL: "https://vetted-assignment.firebaseio.com",
+    projectId: "vetted-assignment",
+    storageBucket: "",
+    messagingSenderId: "101112613508"
+  };
+  firebase.initializeApp(config);
+</script>
+  
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="app.js"></script>
+
+  <script src="directives/validator/directive.js"></script>
+
+  <script src="components/helpers/httpHelper.js"></script>
+  <script src="components/autocomplete/directive.js"></script>
+  <script src="components/formGenerator/directive.js"></script>
+
+  <script src="modules/home/home.js"></script>
+  <script src="modules/configuration/configuration.js"></script>
+  <script src="modules/configuration/service.js"></script> 
+
+</body>
+</html>

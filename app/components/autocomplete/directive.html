@@ -1,0 +1,20 @@
+<span class="vt-dropdown" ng-if="dropdownCtrl.dependentOn">
+    <div class="vt-dropdown-canvas">
+        <label ng-click="dropdownCtrl.showList()" class="form-control" name="dropdownCtrl.name"> 
+            {{dropdownCtrl.model[dropdownCtrl.displayField]}}<span class=" pull-right glyphicon glyphicon-menu-down"></span>
+        </label>
+        <div>
+            <ul class="list-group" ng-show="dropdownCtrl.showDropdown">
+                <input type="text" class="form-control searchbox"
+                        placeholder="Type to filter.."
+                        ng-model="dropdownCtrl.searchText" 
+                        ng-show="dropdownCtrl.showDropdown && dropdownCtrl.items.length > 3"
+                        ng-keyup="dropdownCtrl.complete(dropdownCtrl.searchText)"  />
+                <li class="list-group-item vt-dropdown-link" ng-repeat="i in dropdownCtrl.filterItems" 
+                    ng-click="dropdownCtrl.selectItem(i, $event);">
+                    <span ng-bind="i[dropdownCtrl.displayField]"></span>
+                </li>
+            </ul>
+        </div 
+    </div>
+</span>
