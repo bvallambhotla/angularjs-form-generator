@@ -1,6 +1,6 @@
 # `angularjs-form-generator` — Generates forms on the fly :)
 
-This project is derived from angular-js seed project. This simply generates a form at runtime by reading from a configuration. Backed up by unit tests.
+This project is derived from angular-js seed project. This simply generates a form at runtime by reading from a configuration. Backed up by unit tests(in-progress).
 
 ## Getting Started
 
